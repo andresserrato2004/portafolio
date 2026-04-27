@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import {
-  Badge,
   Button,
   Card,
   CardContent,
@@ -9,9 +8,8 @@ import {
   CardHeader,
   CardTitle,
   Chip,
-  Tooltip,
 } from "@heroui/react";
-import { ArrowRight, ExternalLink, GitBranch, Layers, ShieldCheck } from "lucide-react";
+import { ArrowRight, ExternalLink, GitBranch, Layers } from "lucide-react";
 import type { Project, ProjectCategory } from "../../data/projects";
 
 type ProjectsSectionProps = {
@@ -25,13 +23,6 @@ const filters: Array<{ label: string; value: ProjectCategory | "all" }> = [
   { label: "Security", value: "security" },
   { label: "Tooling", value: "tooling" },
 ];
-
-const categoryLabels: Record<ProjectCategory, string> = {
-  web: "Web",
-  api: "API",
-  security: "Seguridad",
-  tooling: "Automatización",
-};
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [selectedFilter, setSelectedFilter] = useState<ProjectCategory | "all">("all");
@@ -75,9 +66,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               className="group border border-[var(--line)] bg-[var(--surface)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--primary)]"
             >
               <CardHeader className="space-y-3">
-                <Badge className="inline-flex w-fit rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-3 py-1 text-[11px] font-medium leading-none text-[var(--accent)]">
-                  {categoryLabels[project.category]}
-                </Badge>
                 <CardTitle className="text-center text-xl text-white">{project.title}</CardTitle>
                 <CardDescription className="text-[var(--text-muted)]">{project.description}</CardDescription>
               </CardHeader>
@@ -100,18 +88,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
                 <div className="flex flex-wrap gap-2">
                   {project.securityNotes.map((note) => (
-                    <Tooltip key={note}>
-                      <Tooltip.Trigger className="inline-flex">
-                        <Chip className="cursor-help border border-[var(--line)] bg-transparent text-[10px] uppercase tracking-[0.1em] text-[var(--primary)]">
-                          <span className="inline-flex items-center gap-1">
-                            <ShieldCheck size={12} /> sec
-                          </span>
-                        </Chip>
-                      </Tooltip.Trigger>
-                      <Tooltip.Content className="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 py-2 text-xs text-[var(--text-muted)]">
-                        {note}
-                      </Tooltip.Content>
-                    </Tooltip>
+                    <Chip
+                      key={note}
+                      className="border border-[var(--line)] bg-transparent text-[10px] uppercase tracking-[0.1em] text-[var(--primary)]"
+                    >
+                      {note}
+                    </Chip>
                   ))}
                 </div>
               </CardContent>
