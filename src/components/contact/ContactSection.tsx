@@ -1,4 +1,5 @@
 import { Button, Card, CardContent, CardHeader, CardTitle, Link } from "@heroui/react";
+import { ExternalLink, GitBranch, Mail } from "lucide-react";
 import { profile } from "../../data/profile";
 
 type ContactSectionProps = {
@@ -13,19 +14,43 @@ export function ContactSection({ profileData }: ContactSectionProps) {
           <CardHeader>
             <CardTitle className="text-center text-2xl text-white md:text-3xl">Contacto</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <p className="max-w-2xl text-[var(--text-muted)]">
-              Estoy disponible para colaborar en productos web, backend o proyectos con foco en ciberseguridad aplicada.
+          <CardContent className="space-y-5">
+            <p className="w-full text-[var(--text-muted)]">
+              Estoy disponible para colaborar en productos web, backend o proyectos con foco en ciberseguridad
+              aplicada.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href={`mailto:${profileData.email}`} target="_blank">
-                {profileData.email}
+            <div className="flex flex-wrap gap-2">
+              <Link
+                className="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)] transition hover:border-[var(--primary)] hover:text-white"
+                href={`mailto:${profileData.email}`}
+                target="_blank"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <Mail size={16} className="text-[var(--accent)]" />
+                  {profileData.email}
+                </span>
               </Link>
-              <Link href={profileData.linkedin} rel="noreferrer" target="_blank">
-                LinkedIn
+              <Link
+                className="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)] transition hover:border-[var(--primary)] hover:text-white"
+                href={profileData.linkedin}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <ExternalLink size={16} className="text-[var(--accent)]" />
+                  LinkedIn
+                </span>
               </Link>
-              <Link href={profileData.github} rel="noreferrer" target="_blank">
-                GitHub
+              <Link
+                className="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)] transition hover:border-[var(--primary)] hover:text-white"
+                href={profileData.github}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <GitBranch size={16} className="text-[var(--accent)]" />
+                  GitHub
+                </span>
               </Link>
             </div>
 

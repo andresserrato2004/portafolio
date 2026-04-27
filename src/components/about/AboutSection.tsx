@@ -1,19 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@heroui/react";
 import { profile } from "../../data/profile";
 import { competitiveProgramming } from "../../data/competitive-programming";
-import { useState, useRef } from "react";
 
 type AboutSectionProps = {
   profileData: typeof profile;
   competitiveData: typeof competitiveProgramming;
-};
-
-type DragState = {
-  isDragging: boolean;
-  startX: number;
-  startY: number;
-  scrollLeft: number;
-  scrollTop: number;
 };
 
 export function AboutSection({ profileData, competitiveData }: AboutSectionProps) {
@@ -22,42 +13,6 @@ export function AboutSection({ profileData, competitiveData }: AboutSectionProps
     semilleroStory && "galleryImages" in semilleroStory && Array.isArray(semilleroStory.galleryImages)
       ? semilleroStory.galleryImages
       : [];
-
-  const dragRef = useRef<HTMLDivElement>(null);
-  const [dragState, setDragState] = useState<DragState>({
-    isDragging: false,
-    startX: 0,
-    startY: 0,
-    scrollLeft: 0,
-    scrollTop: 0,
-  });
-
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!dragRef.current) return;
-    setDragState({
-      isDragging: true,
-      startX: e.pageX - dragRef.current.offsetLeft,
-      startY: e.pageY - dragRef.current.offsetTop,
-      scrollLeft: dragRef.current.scrollLeft,
-      scrollTop: dragRef.current.scrollTop,
-    });
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!dragState.isDragging || !dragRef.current) return;
-    
-    const x = e.pageX - dragRef.current.offsetLeft;
-    const y = e.pageY - dragRef.current.offsetTop;
-    const walkX = (x - dragState.startX) * 1.5;
-    const walkY = (y - dragState.startY) * 1.5;
-    
-    dragRef.current.scrollLeft = dragState.scrollLeft - walkX;
-    dragRef.current.scrollTop = dragState.scrollTop - walkY;
-  };
-
-  const handleMouseUp = () => {
-    setDragState((prev) => ({ ...prev, isDragging: false }));
-  };
 
   return (
     <section id="about" className="reveal-section px-4 py-10 md:px-8 md:py-14">

@@ -38,9 +38,7 @@ export default function PortfolioApp() {
       <div className="bg-tech-grid min-h-screen">
         <NavbarSection />
         <HeroSection profileData={profile} />
-        <MotionWrap>
-          <AboutSection profileData={profile} competitiveData={competitiveProgramming} />
-        </MotionWrap>
+        <AboutSection profileData={profile} competitiveData={competitiveProgramming} />
         <MotionWrap>
           <SkillsSection skills={featuredSkills} />
         </MotionWrap>
