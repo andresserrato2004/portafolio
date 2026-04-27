@@ -1,5 +1,5 @@
 {
-  "name": "red-remnant",
+  "name": "portafolio",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,6 +12,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.9"
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/react": "^5.0.4",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@heroui/react": "^3.0.3",
+    "@heroui/theme": "^2.4.26",
+    "@tailwindcss/vite": "^4.2.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.1.9",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.11.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^5.9.3"
   }
 }

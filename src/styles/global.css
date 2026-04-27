@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "@heroui/react/styles";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/jetbrains-mono/700.css";
+
+:root {
+  --bg: #3f194d;
+  --surface: #68097e;
+  --surface-2: #531162;
+  --text: #ffffff;
+  --text-muted: #f8d9f2;
+  --primary: #c91c7a;
+  --accent: #ffca06;
+  --line: #e8675c;
+  --font-main: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  line-height: 1.45;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffe57c;
+}
+
+.bg-tech-grid {
+  background-image:
+    radial-gradient(circle at 16% 14%, rgba(201, 28, 122, 0.34) 0, transparent 30%),
+    radial-gradient(circle at 85% 9%, rgba(232, 103, 92, 0.28) 0, transparent 24%),
+    linear-gradient(rgba(255, 202, 6, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 202, 6, 0.18) 1px, transparent 1px);
+  background-position: center;
+  background-size: auto, auto, 36px 36px, 36px 36px;
+}
+
+.reveal-section {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
