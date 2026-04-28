@@ -72,14 +72,14 @@ export function HeroSection({ profileData, locale = "es" }: HeroSectionProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-3">
-          <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
-            <div
-              className="aspect-[3/4] w-full rounded-xl border border-[var(--line)] bg-[var(--surface-2)] bg-cover bg-center"
-              style={{ backgroundImage: `url(${profileData.imageUrl})` }}
-            />
-          </div>
-        </div>
+         <div className="grid grid-cols-1 gap-3">
+           <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
+             <div
+               className="aspect-[3/4] w-full rounded-xl border border-[var(--line)] bg-[var(--surface-2)] bg-cover bg-center"
+               style={{ backgroundImage: `url(${profileData.imageUrl})` }}
+             />
+           </div>
+         </div>
       </div>
     </section>
   );

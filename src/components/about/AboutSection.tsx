@@ -39,7 +39,16 @@ export function AboutSection({ profileData, competitiveData, locale = "es" }: Ab
                   {semilleroStory.title}
                 </CardTitle>
                 <div
-                  className="absolute -right-px top-0 aspect-square w-20 rounded-lg border border-[var(--line)] bg-[var(--surface-2)] bg-contain bg-center bg-no-repeat"
+                  className="
+                    sm:absolute 
+                    sm:-right-px sm:top-0
+                    mx-auto sm:mx-0
+                    aspect-square 
+                    w-16 sm:w-20
+                    rounded-lg 
+                    border border-[var(--line)] 
+                    bg-cover bg-center bg-no-repeat
+                  "
                   style={{ backgroundImage: `url(${semilleroStory.imageUrl})` }}
                 />
               </div>
