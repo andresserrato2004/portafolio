@@ -33,6 +33,4 @@ export const profileEn = {
     { label: "Featured projects", value: "10+" },
     { label: "Years building software", value: "4+" },
   ],
-  tagline:
-    "I build robust software products and continuously improve their security posture with a practical, engineering-driven mindset.",
 };

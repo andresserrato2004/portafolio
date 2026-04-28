@@ -51,10 +51,6 @@ export function HeroSection({ profileData, locale = "es" }: HeroSectionProps) {
             </Chip>
           </div>
 
-          <p className="max-w-3xl text-pretty text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
-            {profileData.tagline}
-          </p>
-
           <div className="flex flex-wrap gap-3">
             <Button
               className="rounded-full border border-[var(--primary)] bg-[var(--primary)] px-6 py-3 font-semibold text-white shadow-[0_0_40px_rgba(100,41,205,0.35)] transition-transform duration-300 hover:-translate-y-0.5"
