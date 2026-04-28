@@ -10,7 +10,6 @@ export type Project = {
   impact: string;
   githubUrl: string;
   demoUrl?: string;
-  securityNotes: string[];
   architecture: string[];
   executionAssets: Array<{ label: string; pathHint: string }>;
   extraContext: string[];
@@ -24,46 +23,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "Gobirthday",
-    title: "GoBirthDay ",
-    description:
-      "Implementación backend en Go con arquitectura orientada a features y conexión a PostgreSQL para operaciones concurrentes.",
-    longDescription:
-      "Proyecto Full Stack orientado a alto rendimiento para mensajería concurrente. La solución fue diseñada con principios de clean Architecture y separación por capas, optimizando confiabilidad operativa y mantenibilidad.",
-    stack: ["Astro","Go", "PostgreSQL", "Docker", "Clean Architecture"],
-    category: "api",
-    impact: "Esta aplicacion puede soportar el envío de decenas de mensajes en menos de 1 segundo con alta resiliencia para esto uso Go routines.",
-    githubUrl: "https://github.com/andresserrato2004/GoBirthDay.git",
-    securityNotes: ["Concurrency-safe design", "Structured logging", "DB reliability"],
-    architecture: [
-      "API layer en Go para recepción y validación de solicitudes.",
-      "Capa de servicios con reglas de negocio y control de concurrencia.",
-      "Repositorio PostgreSQL para persistencia robusta y eficiente.",
-      "Contenerización para despliegue estable y reproducible.",
-    ],
-    executionAssets: [
-      { label: "Flujo principal en ejecución", pathHint: "public/projects/gobirthday/flow-main.png" },
-      { label: "Métricas de concurrencia", pathHint: "public/projects/gobirthday/concurrency-metrics.png" },
-      { label: "Arquitectura del servicio", pathHint: "public/projects/gobirthday/architecture-diagram.png" },
-    ],
-    extraContext: [
-      "Incluye evidencias de desempeño concurrente.",
-      "Puedes documentar decisiones de diseño (trade-offs y lecciones aprendidas).",
-    ],
-  },
-  {
     slug: "sistemas-sophia-microservicios",
     title: "Sistemas SOPHIA (Microservicios)",
     description:
       "Desarrollo de ecosistema distribuido basado en microservicios desplegados en contenedores ECS de AWS.",
     longDescription:
       "SOPHIA es una plataforma EdTech que combina inteligencia artificial, pedagogía y analítica para crear experiencias de aprendizaje personalizadas. Nace para responder a tres brechas: baja finalización de cursos online, uso ineficiente de IA por parte de estudiantes y falta de seguimiento personalizado para instituciones e instructores.",
-    stack: ["Node.js", "Java", "Docker", "AWS ECS Fargate"],
+    stack: ["Node.js", "TS" , "Docker", "AWS ECS Fargate"],
     category: "web",
     impact:
       "Propone una base escalable para personalización educativa con IA, mejorando retención y seguimiento de progreso con arquitectura distribuida segura.",
     githubUrl: "https://github.com/andresserrato2004",
-    securityNotes: ["Service isolation", "Container security", "JWT auth", "Rate limiting", "Resilient deployment"],
     architecture: [
       "Frontend web/móvil autenticado con Amazon Cognito (JWT) y entrada única por API Gateway.",
       "Microservicios desacoplados (Course, User, AI Tutor, Coordinator) desplegados en ECS sobre AWS Fargate.",
@@ -146,6 +116,33 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "Gobirthday",
+    title: "GoBirthDay ",
+    description:
+      "Implementación backend en Go con arquitectura orientada a features y conexión a PostgreSQL para operaciones concurrentes.",
+    longDescription:
+      "Proyecto Full Stack orientado a alto rendimiento para mensajería concurrente. La solución fue diseñada con principios de clean Architecture y separación por capas, optimizando confiabilidad operativa y mantenibilidad.",
+    stack: ["Astro","Go", "PostgreSQL", "Docker", "Clean Architecture"],
+    category: "api",
+    impact: "Esta aplicacion puede soportar el envío de decenas de mensajes en menos de 1 segundo con alta resiliencia para esto uso Go routines.",
+    githubUrl: "https://github.com/andresserrato2004/GoBirthDay.git",
+    architecture: [
+      "API layer en Go para recepción y validación de solicitudes.",
+      "Capa de servicios con reglas de negocio y control de concurrencia.",
+      "Repositorio PostgreSQL para persistencia robusta y eficiente.",
+      "Contenerización para despliegue estable y reproducible.",
+    ],
+    executionAssets: [
+      { label: "Flujo principal en ejecución", pathHint: "public/projects/gobirthday/flow-main.png" },
+      { label: "Métricas de concurrencia", pathHint: "public/projects/gobirthday/concurrency-metrics.png" },
+      { label: "Arquitectura del servicio", pathHint: "public/projects/gobirthday/architecture-diagram.png" },
+    ],
+    extraContext: [
+      "Incluye evidencias de desempeño concurrente.",
+      "Puedes documentar decisiones de diseño (trade-offs y lecciones aprendidas).",
+    ],
+  },
+  {
     slug: "plataforma-reservas-monitoreo-eci",
     title: "Plataforma de reservas y monitoreo (Escuela Colombiana de Ingeniería)",
     description:
@@ -156,7 +153,6 @@ export const projects: Project[] = [
     category: "security",
     impact: "Digitalizó procesos internos y centralizó métricas de seguimiento académico.",
     githubUrl: "https://github.com/andresserrato2004",
-    securityNotes: ["Access control", "Auditability", "Operational observability"],
     architecture: [
       "Frontend y backend desacoplados con API de reservas.",
       "Módulo de monitoreo para seguimiento académico centralizado.",
@@ -184,7 +180,6 @@ export const projects: Project[] = [
     category: "tooling",
     impact: "Reducción del 95% en tiempos de evaluación de datos institucionales.",
     githubUrl: "https://github.com/andresserrato2004",
-    securityNotes: ["Reliable pipelines", "Data integrity", "Structured process controls"],
     architecture: [
       "Pipeline automatizado desde ingesta hasta resultado final.",
       "Validación de calidad de datos en cada etapa.",

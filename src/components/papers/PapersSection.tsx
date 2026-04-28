@@ -8,6 +8,9 @@ type PapersSectionProps = {
     status: string;
     summary: string;
     link: string;
+    authors?: Array<{ name: string; linkedin: string }>;
+    keywords?: string[];
+    citation?: string;
   }>;
 };
 
@@ -28,15 +31,38 @@ export function PapersSection({ papers }: PapersSectionProps) {
                     {paper.status}
                   </Chip>
                 </div>
-                <CardTitle className="text-center text-xl text-white">{paper.title}</CardTitle>
+                <CardTitle className=" text-xl text-white">{paper.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-[var(--text-muted)]">
-                <p>
+                {paper.role && (
+                  <p>
                   <span className="text-white">Rol:</span> {paper.role}
                 </p>
+                )}
                 <p>{paper.summary}</p>
+                {paper.authors?.length ? (
+                  <div className="space-y-2 pt-1">
+                    <p className="text-sm font-semibold text-white">Autores</p>
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                      {paper.authors.map((author, index) => (
+                        <span key={author.name} className="inline-flex items-center gap-2">
+                          <a className="font-semibold text-white hover:text-[var(--accent)]" href={author.linkedin} rel="noreferrer" target="_blank">
+                            {author.name}
+                          </a>
+                          {index < (paper.authors?.length ?? 0) - 1 ? <span className="text-[var(--line)]">·</span> : null}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+                {paper.keywords?.length ? (
+                  <p className="text-sm">
+                    <span className="text-white">Keywords:</span> {paper.keywords.join(", ")}
+                  </p>
+                ) : null}
                 {paper.link !== "#" ? (
-                  <a className="text-sm text-[var(--accent)]" href={paper.link} target="_blank" rel="noreferrer">
+                  
+                  <a className="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm transition-colors hover:border-[var(--primary)]" href={paper.link} target="_blank" rel="noreferrer">
                     Ver publicación
                   </a>
                 ) : null}

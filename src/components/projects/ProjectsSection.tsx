@@ -85,17 +85,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     </Chip>
                   ))}
                 </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.securityNotes.map((note) => (
-                    <Chip
-                      key={note}
-                      className="border border-[var(--line)] bg-transparent text-[10px] uppercase tracking-[0.1em] text-[var(--primary)]"
-                    >
-                      {note}
-                    </Chip>
-                  ))}
-                </div>
               </CardContent>
 
               <CardFooter className="flex flex-wrap gap-2">

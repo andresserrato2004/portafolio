@@ -11,7 +11,13 @@ export const getStaticPaths = () =>
 const { project } = Astro.props;
 const imageUrl = (src: string) => encodeURI(src);
 const isSophia = project.slug === "sistemas-sophia-microservicios";
-const architectureText = project.architecture?.join(" ");
+const stack = project.stack ?? [];
+const architecture = project.architecture ?? [];
+const securityNotes = project.securityNotes ?? [];
+const detailLinks = project.detailLinks ?? [];
+const ideaApproach = project.ideaApproach ?? [];
+const teamMembers = project.teamMembers ?? [];
+const architectureText = architecture.join(" ");
 const architectureDiagram = project.diagramAssets?.[0];
 const entitiesDiagram = project.diagramAssets?.[1];
 const repoLinks =
@@ -50,15 +56,15 @@ if (!project) {
         <h1 class="text-balance text-3xl font-bold text-white md:text-5xl">{project.title}</h1>
         <p class="mt-4 max-w-4xl text-[var(--text-muted)]">{project.longDescription}</p>
         <div class="mt-5 flex flex-wrap gap-2">
-          {project.stack.map((tech: string) => (
+          {stack.map((tech: string) => (
             <span class="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
               {tech}
             </span>
           ))}
         </div>
-        {project.detailLinks?.length ? (
+        {detailLinks.length ? (
           <div class="mt-5 flex flex-wrap gap-2">
-            {project.detailLinks.map((item: { label: string; url: string }) => (
+            {detailLinks.map((item: { label: string; url: string }) => (
               <a
                 href={item.url}
                 target="_blank"
@@ -79,11 +85,11 @@ if (!project) {
               <article>
                 <h2 class="text-xl font-semibold text-white">Arquitectura</h2>
                 <p class="mt-4 text-sm text-[var(--text-muted)]">{architectureText}</p>
-                {project.ideaApproach?.length ? (
+                {ideaApproach.length ? (
                   <>
                     <h3 class="mt-6 text-base font-semibold text-white">Planteamiento de la idea</h3>
                     <ul class="mt-3 space-y-2">
-                      {project.ideaApproach.map((item: string) => (
+                      {ideaApproach.map((item: string) => (
                         <li class="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm text-[var(--text-muted)]">
                           {item}
                         </li>
@@ -183,7 +189,7 @@ if (!project) {
           <article class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
             <h2 class="text-xl font-semibold text-white">Arquitectura</h2>
             <ul class="mt-4 space-y-2">
-              {project.architecture.map((item: string) => (
+              {architecture.map((item: string) => (
                 <li class="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm text-[var(--text-muted)]">
                   {item}
                 </li>
@@ -197,7 +203,7 @@ if (!project) {
               <span class="text-white">Impacto:</span> {project.impact}
             </p>
             <div class="mt-3 flex flex-wrap gap-2">
-              {project.securityNotes.map((note: string) => (
+              {securityNotes.map((note: string) => (
                 <span class="rounded-full border border-[var(--line)] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[var(--primary)]">
                   {note}
                 </span>
@@ -215,11 +221,11 @@ if (!project) {
         </section>
       )}
 
-      {project.teamMembers?.length ? (
+      {teamMembers.length ? (
         <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
           <h2 class="text-xl font-semibold text-white">Equipo del proyecto</h2>
           <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {project.teamMembers.map((member: { name: string; role: string; linkedin: string }) => (
+            {teamMembers.map((member: { name: string; role: string; linkedin: string }) => (
               <a
                 href={member.linkedin}
                 target="_blank"

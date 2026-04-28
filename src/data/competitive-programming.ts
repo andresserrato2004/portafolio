@@ -7,5 +7,5 @@ export const competitiveProgramming = {
     "Trabajo colaborativo y mentoría técnica para fortalecer equipos de competencia.",
   ],
   semillero:
-    "El Semillero de Programación Competitiva de la Universidad Escuela Colombiana de Ingeniería Julio Garavito fue creado hace cerca de 15 años y, desde entonces, ha participado en la mayoría de maratones nacionales y regionales..",
+    "El Semillero de Programación Competitiva de la Universidad Escuela Colombiana de Ingeniería Julio Garavito fue creado hace cerca de 15 años y, desde entonces, ha participado en la mayoría de maratones nacionales y regionales.",
 };

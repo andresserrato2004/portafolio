@@ -12,19 +12,45 @@ type SecurityFocusSectionProps = {
 };
 
 export function SecurityFocusSection({ focus, certifications }: SecurityFocusSectionProps) {
+  const prioritizedFocus = [...focus].sort((a, b) => {
+    const aPriority =
+      /xss|sql|owasp|inyection|injection/i.test(a.title) || /xss|sql|owasp|inyection|injection/i.test(a.description)
+        ? 0
+        : 1;
+    const bPriority =
+      /xss|sql|owasp|inyection|injection/i.test(b.title) || /xss|sql|owasp|inyection|injection/i.test(b.description)
+        ? 0
+        : 1;
+    return aPriority - bPriority;
+  });
+
   return (
     <section id="security-focus" className="reveal-section px-4 py-10 md:px-8 md:py-14">
-      <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <Card className="border border-[var(--line)] bg-[var(--surface)]">
           <CardHeader>
-            <CardTitle className="text-center text-xl text-white md:text-2xl">Security Focus</CardTitle>
+            <CardTitle className="text-center text-xl text-white md:text-2xl">Cursos / Certificaciones</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-5">
-            {focus.map((item, index) => (
-              <div key={item.title} className="space-y-2">
-                <h3 className="text-base font-semibold text-white">{item.title}</h3>
-                <p className="text-sm text-[var(--text-muted)]">{item.description}</p>
-                {index < focus.length - 1 ? <Separator className="mt-3 bg-[var(--line)]" /> : null}
+          <CardContent className="space-y-4">
+            {certifications.map((item) => (
+              <div key={item.certId} className="rounded-xl border border-[var(--line)] bg-[var(--surface-2)] p-3">
+                <div className="mb-3">
+                  <p className="text-sm font-semibold text-white">{item.name}</p>
+                  <p className="text-sm text-[var(--text-muted)]">{item.issuer}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{item.date}</p>
+                  <p className="text-xs text-[var(--text-muted)]">Cert ID: {item.certId}</p>
+                </div>
+                <a className="block" href={item.fileUrl} rel="noreferrer" target="_blank">
+                  <img
+                    alt={`${item.name} - certificado`}
+                    className="h-80 w-full rounded-lg border border-[var(--line)] bg-[var(--surface)] object-contain"
+                    loading="lazy"
+                    src={item.fileUrl}
+                  />
+                </a>
+                <a className="mt-3 inline-flex text-xs text-[var(--accent)]" href={item.fileUrl} rel="noreferrer" target="_blank">
+                  Abrir certificado en tamaño completo
+                </a>
               </div>
             ))}
           </CardContent>
@@ -32,18 +58,14 @@ export function SecurityFocusSection({ focus, certifications }: SecurityFocusSec
 
         <Card className="border border-[var(--line)] bg-[var(--surface)]">
           <CardHeader>
-            <CardTitle className="text-center text-xl text-white md:text-2xl">Cursos / Certificaciones</CardTitle>
+            <CardTitle className="text-center text-xl text-white md:text-2xl">Security Focus</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
-            {certifications.map((item) => (
-              <div key={item.certId} className="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm text-[var(--text-muted)]">
-                <p className="font-semibold text-white">{item.name}</p>
-                <p>{item.issuer}</p>
-                <p>{item.date}</p>
-                <p className="text-xs">Cert ID: {item.certId}</p>
-                <a className="text-xs text-[var(--accent)]" href={item.fileUrl} target="_blank" rel="noreferrer">
-                  Ver certificado
-                </a>
+          <CardContent className="space-y-5">
+            {prioritizedFocus.map((item, index) => (
+              <div key={item.title} className="space-y-2">
+                <h3 className="text-base font-semibold text-white">{item.title}</h3>
+                <p className="text-sm text-[var(--text-muted)]">{item.description}</p>
+                {index < prioritizedFocus.length - 1 ? <Separator className="mt-3 bg-[var(--line)]" /> : null}
               </div>
             ))}
           </CardContent>

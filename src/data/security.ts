@@ -1,5 +1,10 @@
 export const securityFocus = [
   {
+    title: "Explotación web (XSS, SQL Injection y OWASP)",
+    description:
+      "Evaluación ofensiva y defensiva de vectores como XSS, SQL Injection, exposición de datos sensibles, CSRF y misconfigurations para reducir superficie de ataque.",
+  },
+  {
     title: "Validación estricta",
     description:
       "Sanitización de entradas, validación de payloads y control de datos en frontera.",
@@ -15,9 +20,9 @@ export const securityFocus = [
       "Rate limiting, cabeceras de seguridad, mitigación de abuso y observabilidad activa.",
   },
   {
-    title: "Prácticas OWASP",
+    title: "Prácticas OWASP en desarrollo",
     description:
-      "Enfoque preventivo frente a XSS, inyección, exposición de datos sensibles y configuración insegura.",
+      "Enfoque preventivo con checklist de seguridad por endpoint, pruebas de regresión y monitoreo de eventos sospechosos.",
   },
 ];
 
@@ -27,6 +32,6 @@ export const certifications = [
     issuer: "Cisco Networking Academy",
     date: "24 Apr 2026",
     certId: "ab1d6829-9cbe-4188-a6f9-539c52fb3959",
-    fileUrl: "/Ethical_Hacker_certificate.pdf",
+    fileUrl: "/Ethical_Hacker_certificate.jpg",
   },
 ];
