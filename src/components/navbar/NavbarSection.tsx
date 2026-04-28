@@ -1,26 +1,37 @@
-import { Button, Chip } from "@heroui/react";
+import { Button } from "@heroui/react";
 import { BookOpenText, Code2, FolderKanban, Home, Mail, Rocket, ShieldCheck } from "lucide-react";
 
-const navItems = [
-  { label: "Inicio", target: "hero", icon: Home },
-  { label: "Sobre mí", target: "about", icon: Rocket },
-  { label: "Skills", target: "skills", icon: Code2 },
-  { label: "Proyectos", target: "projects", icon: FolderKanban },
-  { label: "Papers", target: "papers", icon: BookOpenText },
-  { label: "Semillero", target: "about", icon: ShieldCheck },
-  { label: "Contacto", target: "contact", icon: Mail },
-];
+type NavbarSectionProps = {
+  locale?: "es" | "en";
+};
 
 const scrollToId = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-export function NavbarSection() {
+export function NavbarSection({ locale = "es" }: NavbarSectionProps) {
+  const isEn = locale === "en";
+  const navItems = [
+    { label: isEn ? "Home" : "Inicio", target: "hero", icon: Home },
+    { label: isEn ? "About" : "Sobre mí", target: "about", icon: Rocket },
+    { label: "Skills", target: "skills", icon: Code2 },
+    { label: isEn ? "Projects" : "Proyectos", target: "projects", icon: FolderKanban },
+    { label: "Papers", target: "papers", icon: BookOpenText },
+    { label: isEn ? "Programming Team" : "Semillero", target: "about", icon: ShieldCheck },
+    { label: isEn ? "Contact" : "Contacto", target: "contact", icon: Mail },
+  ];
+
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[color-mix(in_oklab,var(--bg)_84%,black)]/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-8">
         <div className="flex items-center gap-3">
           <span className="text-sm font-semibold tracking-[0.18em] text-white">DEV//SEC</span>
+          <a
+            className="inline-flex rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-[var(--accent)]"
+            href={isEn ? "/" : "/en"}
+          >
+            {isEn ? "ES" : "EN"}
+          </a>
         </div>
 
         <nav className="hidden items-center gap-2 md:flex">

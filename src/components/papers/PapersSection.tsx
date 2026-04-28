@@ -12,13 +12,17 @@ type PapersSectionProps = {
     keywords?: string[];
     citation?: string;
   }>;
+  locale?: "es" | "en";
 };
 
-export function PapersSection({ papers }: PapersSectionProps) {
+export function PapersSection({ papers, locale = "es" }: PapersSectionProps) {
+  const isEn = locale === "en";
   return (
     <section id="papers" className="reveal-section px-4 py-1 md:px-8 md:py-8">
       <div className="mx-auto w-full max-w-6xl">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-white md:text-3xl">Papers publicados</h2>
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          {isEn ? "Published papers" : "Papers publicados"}
+        </h2>
         <div className="grid gap-5">
           {papers.map((paper) => (
             <Card key={paper.title} className="border border-[var(--line)] bg-[var(--surface)]">
@@ -36,13 +40,13 @@ export function PapersSection({ papers }: PapersSectionProps) {
               <CardContent className="space-y-2 text-[var(--text-muted)]">
                 {paper.role && (
                   <p>
-                  <span className="text-white">Rol:</span> {paper.role}
+                  <span className="text-white">{isEn ? "Role:" : "Rol:"}</span> {paper.role}
                 </p>
                 )}
                 <p>{paper.summary}</p>
                 {paper.authors?.length ? (
                   <div className="space-y-2 pt-1">
-                    <p className="text-sm font-semibold text-white">Autores</p>
+                    <p className="text-sm font-semibold text-white">{isEn ? "Authors" : "Autores"}</p>
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
                       {paper.authors.map((author, index) => (
                         <span key={author.name} className="inline-flex items-center gap-2">
@@ -60,10 +64,15 @@ export function PapersSection({ papers }: PapersSectionProps) {
                     <span className="text-white">Keywords:</span> {paper.keywords.join(", ")}
                   </p>
                 ) : null}
+                {paper.citation ? (
+                  <p className="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm">
+                    <span className="text-white">{isEn ? "Citation:" : "Citación:"}</span> {paper.citation}
+                  </p>
+                ) : null}
                 {paper.link !== "#" ? (
                   
                   <a className="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm transition-colors hover:border-[var(--primary)]" href={paper.link} target="_blank" rel="noreferrer">
-                    Ver publicación
+                    {isEn ? "View publication" : "Ver publicación"}
                   </a>
                 ) : null}
               </CardContent>

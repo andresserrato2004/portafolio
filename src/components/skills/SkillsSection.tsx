@@ -3,6 +3,7 @@ import { Cloud, Code2, Cpu, Database, Network, Server, ShieldCheck, SquareStack 
 
 type SkillsSectionProps = {
   skills: Array<{ name: string; icon: string }>;
+  locale?: "es" | "en";
 };
 
 const iconMap = {
@@ -16,12 +17,15 @@ const iconMap = {
   shield: ShieldCheck,
 } as const;
 
-export function SkillsSection({ skills }: SkillsSectionProps) {
+export function SkillsSection({ skills, locale = "es" }: SkillsSectionProps) {
+  const isEn = locale === "en";
   return (
     <section id="skills" className="reveal-section px-4 py-1 md:px-8 md:py-8">
       <div className="mx-auto w-full max-w-6xl">
         <h2 className="mb-2 text-2xl font-bold tracking-tight text-white md:text-3xl">Skills</h2>
-        <p className="mb-6 text-sm text-[var(--text-muted)]">Tecnologías clave de mi stack principal.</p>
+        <p className="mb-6 text-sm text-[var(--text-muted)]">
+          {isEn ? "Key technologies in my main stack." : "Tecnologías clave de mi stack principal."}
+        </p>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {skills.map((skill) => {
             const Icon = iconMap[skill.icon as keyof typeof iconMap] ?? Code2;

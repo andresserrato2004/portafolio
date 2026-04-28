@@ -3,13 +3,15 @@ import { profile } from "../../data/profile";
 
 type HeroSectionProps = {
   profileData: typeof profile;
+  locale?: "es" | "en";
 };
 
 const scrollToId = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-export function HeroSection({ profileData }: HeroSectionProps) {
+export function HeroSection({ profileData, locale = "es" }: HeroSectionProps) {
+  const isEn = locale === "en";
   return (
     <section id="hero" className="relative overflow-hidden px-4 pb-12 pt-16 md:px-8 md:pb-16 md:pt-20">
       <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-start">
@@ -20,13 +22,14 @@ export function HeroSection({ profileData }: HeroSectionProps) {
 
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 text-[var(--text-muted)]">
             <p className="text-sm">
-              <span className="text-white">Perfil profesional:</span> {profileData.role}
+              <span className="text-white">{isEn ? "Professional profile:" : "Perfil profesional:"}</span> {profileData.role}
             </p>
             <p className="mt-1 text-sm">
-              <span className="text-white">Ubicación:</span> {profileData.location}
+              <span className="text-white">{isEn ? "Location:" : "Ubicación:"}</span> {profileData.location}
             </p>
             <p className="mt-1 text-sm">
-              <span className="text-white">Experiencia:</span> {profileData.yearsExperience} años
+              <span className="text-white">{isEn ? "Experience:" : "Experiencia:"}</span> {profileData.yearsExperience}{" "}
+              {isEn ? "years" : "años"}
             </p>
           </div>
 
@@ -57,14 +60,14 @@ export function HeroSection({ profileData }: HeroSectionProps) {
               className="rounded-full border border-[var(--primary)] bg-[var(--primary)] px-6 py-3 font-semibold text-white shadow-[0_0_40px_rgba(100,41,205,0.35)] transition-transform duration-300 hover:-translate-y-0.5"
               onClick={() => scrollToId("projects")}
             >
-              Ver proyectos
+              {isEn ? "View projects" : "Ver proyectos"}
             </Button>
             <Button
               className="rounded-full border border-[var(--line)] bg-[var(--surface)] px-6 py-3 font-semibold text-white transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
               onClick={() => scrollToId("contact")}
               variant="ghost"
             >
-              Contactar
+              {isEn ? "Contact" : "Contactar"}
             </Button>
           </div>
         </div>

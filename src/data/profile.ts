@@ -33,4 +33,6 @@ export const profile = {
     { label: "Proyectos destacados", value: "10+" },
     { label: "Años construyendo software", value: "4+" },
   ],
+  tagline:
+    "Construyo productos de software robustos y mejoro continuamente su postura de seguridad con una mentalidad práctica de ingeniería.",
 };

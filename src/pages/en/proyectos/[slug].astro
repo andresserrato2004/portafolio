@@ -1,0 +1,264 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import { projectsEn } from "../../../data/projects.en.ts";
+
+export const getStaticPaths = () =>
+  projectsEn.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+
+const { project } = Astro.props;
+const imageUrl = (src: string) => encodeURI(src);
+const isSophia = project.slug === "sistemas-sophia-microservicios";
+const stack = project.stack ?? [];
+const architecture = project.architecture ?? [];
+const securityNotes = project.securityNotes ?? [];
+const detailLinks = project.detailLinks ?? [];
+const ideaApproach = project.ideaApproach ?? [];
+const teamMembers = project.teamMembers ?? [];
+const architectureText = architecture.join(" ");
+const architectureDiagram = project.diagramAssets?.[0];
+const entitiesDiagram = project.diagramAssets?.[1];
+const repoLinks =
+  project.repoLinks?.length
+    ? project.repoLinks
+    : isSophia
+      ? [
+          { label: "Coordinator Service", url: "https://github.com/IETI-Group/AI-Platform-Coordinator" },
+          { label: "Course Service", url: "https://github.com/IETI-Group/AI-Platform-CourseService" },
+          { label: "Tutor Chat Service", url: "https://github.com/IETI-Group/AI-Platform-TutorChatService" },
+          { label: "User Service", url: "https://github.com/IETI-Group/AI-Platform-UserService" },
+          { label: "Frontend", url: "https://github.com/IETI-Group/AI-Platform-Front" },
+        ]
+      : [];
+
+if (!project) {
+  return Astro.redirect("/en");
+}
+---
+
+<MainLayout
+  lang="en"
+  title={`${project.title} | Andres Serrato Portfolio`}
+  description={project.description}
+>
+  <main class="min-h-screen bg-[var(--bg)] px-4 py-10 text-[var(--text)] md:px-8">
+    <div class="mx-auto w-full max-w-6xl space-y-8">
+      <a
+        href="/en"
+        class="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-2 text-xs text-[var(--text-muted)] transition-colors hover:text-white"
+      >
+        ← Back to portfolio
+      </a>
+
+      <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 md:p-8">
+        <p class="mb-2 text-xs uppercase tracking-[0.12em] text-[var(--accent)]">Project</p>
+        <h1 class="text-balance text-3xl font-bold text-white md:text-5xl">{project.title}</h1>
+        <p class="mt-4 max-w-4xl text-[var(--text-muted)]">{project.longDescription}</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {stack.map((tech: string) => (
+            <span class="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
+              {tech}
+            </span>
+          ))}
+        </div>
+        {detailLinks.length ? (
+          <div class="mt-5 flex flex-wrap gap-2">
+            {detailLinks.map((item: { label: string; url: string }) => (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex rounded-full border border-[var(--accent)] bg-transparent px-4 py-2 text-xs text-[var(--accent)] transition-colors hover:bg-[var(--surface-2)]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        ) : null}
+      </section>
+
+      {isSophia ? (
+        <>
+          <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+              <article>
+                <h2 class="text-xl font-semibold text-white">Architecture</h2>
+                <p class="mt-4 text-sm text-[var(--text-muted)]">{architectureText}</p>
+                {ideaApproach.length ? (
+                  <>
+                    <h3 class="mt-6 text-base font-semibold text-white">Project approach</h3>
+                    <ul class="mt-3 space-y-2">
+                      {ideaApproach.map((item: string) => (
+                        <li class="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm text-[var(--text-muted)]">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : null}
+                <p class="mt-5 text-sm text-[var(--text-muted)]">
+                  <span class="text-white">Impact:</span> {project.impact}
+                </p>
+              </article>
+
+              {architectureDiagram ? (
+                <article>
+                  <p class="mb-3 text-sm font-medium text-white">{architectureDiagram.label}</p>
+                  <img
+                    src={imageUrl(architectureDiagram.imageUrl)}
+                    alt={architectureDiagram.label}
+                    class="max-h-[680px] w-full rounded-lg border border-[var(--line)] bg-[var(--surface-2)] object-contain"
+                    loading="lazy"
+                  />
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <a
+                      href={imageUrl(architectureDiagram.imageUrl)}
+                      target="_blank"
+                      rel="noreferrer"
+                      class="inline-flex rounded-full border border-[var(--primary)] bg-[var(--primary)] px-3 py-1.5 text-xs text-white"
+                    >
+                      Enlarge image
+                    </a>
+                    {architectureDiagram.detailsUrl ? (
+                      <a
+                        href={architectureDiagram.detailsUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex rounded-full border border-[var(--line)] bg-transparent px-3 py-1.5 text-xs text-[var(--text-muted)] hover:text-white"
+                      >
+                        View diagram details
+                      </a>
+                    ) : null}
+                  </div>
+                </article>
+              ) : null}
+            </div>
+          </section>
+
+          <section class="grid gap-6 lg:grid-cols-2">
+            {entitiesDiagram ? (
+              <article class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
+                <p class="mb-3 text-sm font-medium text-white">{entitiesDiagram.label}</p>
+                <img
+                  src={imageUrl(entitiesDiagram.imageUrl)}
+                  alt={entitiesDiagram.label}
+                  class="h-56 w-full rounded-lg border border-[var(--line)] bg-[var(--surface-2)] object-contain md:h-64"
+                  loading="lazy"
+                />
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <a
+                    href={imageUrl(entitiesDiagram.imageUrl)}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex rounded-full border border-[var(--primary)] bg-[var(--primary)] px-3 py-1.5 text-xs text-white"
+                  >
+                    Enlarge image
+                  </a>
+                  {entitiesDiagram.detailsUrl ? (
+                    <a
+                      href={entitiesDiagram.detailsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      class="inline-flex rounded-full border border-[var(--line)] bg-transparent px-3 py-1.5 text-xs text-[var(--text-muted)] hover:text-white"
+                    >
+                      View diagram details
+                    </a>
+                  ) : null}
+                </div>
+              </article>
+            ) : null}
+
+            {project.demoVideoUrl ? (
+              <article class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
+                <p class="mb-3 text-sm font-medium text-white">Functional demo</p>
+                <video
+                  class="mx-auto w-full max-w-xs rounded-lg border border-[var(--line)]"
+                  controls
+                  preload="metadata"
+                >
+                  <source src={project.demoVideoUrl} type="video/mp4" />
+                  Your browser does not support video playback.
+                </video>
+              </article>
+            ) : null}
+          </section>
+        </>
+      ) : (
+        <section class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <article class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+            <h2 class="text-xl font-semibold text-white">Architecture</h2>
+            <ul class="mt-4 space-y-2">
+              {architecture.map((item: string) => (
+                <li class="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 text-sm text-[var(--text-muted)]">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+            <h2 class="text-xl font-semibold text-white">Impact & security</h2>
+            <p class="mt-3 text-sm text-[var(--text-muted)]">
+              <span class="text-white">Impact:</span> {project.impact}
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {securityNotes.map((note: string) => (
+                <span class="rounded-full border border-[var(--line)] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[var(--primary)]">
+                  {note}
+                </span>
+              ))}
+            </div>
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-5 inline-flex rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2 text-xs text-white"
+            >
+              View repository
+            </a>
+          </article>
+        </section>
+      )}
+
+      {teamMembers.length ? (
+        <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+          <h2 class="text-xl font-semibold text-white">Project team</h2>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {teamMembers.map((member: { name: string; role: string; linkedin: string }) => (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-xl border border-[var(--line)] bg-[var(--surface-2)] p-3 transition-colors hover:border-[var(--primary)]"
+              >
+                <p class="text-sm font-semibold text-white">{member.name}</p>
+                <p class="mt-1 text-xs text-[var(--text-muted)]">{member.role}</p>
+                <p class="mt-2 text-xs text-[var(--accent)]">View LinkedIn</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {repoLinks.length ? (
+        <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+          <h2 class="text-xl font-semibold text-white">Project repositories</h2>
+          <div class="mt-4 grid gap-2 sm:grid-cols-2">
+            {repoLinks.map((repo: { label: string; url: string }) => (
+              <a
+                href={repo.url}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 py-2 text-sm text-[var(--text-muted)] transition-colors hover:border-[var(--primary)] hover:text-white"
+              >
+                {repo.label}
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </div>
+  </main>
+</MainLayout>

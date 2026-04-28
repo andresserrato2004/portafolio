@@ -14,17 +14,19 @@ import type { Project, ProjectCategory } from "../../data/projects";
 
 type ProjectsSectionProps = {
   projects: Project[];
+  locale?: "es" | "en";
 };
 
-const filters: Array<{ label: string; value: ProjectCategory | "all" }> = [
-  { label: "Todos", value: "all" },
-  { label: "Web", value: "web" },
-  { label: "APIs", value: "api" },
-  { label: "Security", value: "security" },
-  { label: "Tooling", value: "tooling" },
-];
-
-export function ProjectsSection({ projects }: ProjectsSectionProps) {
+export function ProjectsSection({ projects, locale = "es" }: ProjectsSectionProps) {
+  const isEn = locale === "en";
+  const filters: Array<{ label: string; value: ProjectCategory | "all" }> = [
+    { label: isEn ? "All" : "Todos", value: "all" },
+    { label: "Web", value: "web" },
+    { label: "APIs", value: "api" },
+    { label: "Security", value: "security" },
+    { label: "Tooling", value: "tooling" },
+  ];
+  const projectBasePath = isEn ? "/en/proyectos" : "/proyectos";
   const [selectedFilter, setSelectedFilter] = useState<ProjectCategory | "all">("all");
 
   const visibleProjects = useMemo(() => {
@@ -38,7 +40,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <h2 className="flex items-center gap-2 text-2xl font-bold tracking-tight text-white md:text-3xl">
             <Layers size={24} className="text-[var(--accent)]" />
-            Proyectos destacados
+            {isEn ? "Featured projects" : "Proyectos destacados"}
           </h2>
           <div className="flex flex-wrap gap-2">
             {filters.map((filter) => (
@@ -72,7 +74,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
               <CardContent className="space-y-4">
                 <p className="text-sm text-[var(--text-muted)]">
-                  <span className="text-white">Impacto:</span> {project.impact}
+                  <span className="text-white">{isEn ? "Impact:" : "Impacto:"}</span> {project.impact}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
@@ -88,11 +90,11 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               </CardContent>
 
               <CardFooter className="flex flex-wrap gap-2">
-                <a className="inline-flex" href={`/proyectos/${project.slug}`}>
+                <a className="inline-flex" href={`${projectBasePath}/${project.slug}`}>
                   <Button className="rounded-full border border-[var(--accent)] bg-transparent px-4 py-2 text-xs text-[var(--accent)]">
                     <span className="inline-flex items-center gap-1.5">
                       <ArrowRight size={14} />
-                      Ver detalle
+                      {isEn ? "View details" : "Ver detalle"}
                     </span>
                   </Button>
                 </a>

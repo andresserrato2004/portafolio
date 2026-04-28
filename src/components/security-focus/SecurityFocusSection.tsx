@@ -9,9 +9,11 @@ type SecurityFocusSectionProps = {
     certId: string;
     fileUrl: string;
   }>;
+  locale?: "es" | "en";
 };
 
-export function SecurityFocusSection({ focus, certifications }: SecurityFocusSectionProps) {
+export function SecurityFocusSection({ focus, certifications, locale = "es" }: SecurityFocusSectionProps) {
+  const isEn = locale === "en";
   const prioritizedFocus = [...focus].sort((a, b) => {
     const aPriority =
       /xss|sql|owasp|inyection|injection/i.test(a.title) || /xss|sql|owasp|inyection|injection/i.test(a.description)
@@ -29,7 +31,9 @@ export function SecurityFocusSection({ focus, certifications }: SecurityFocusSec
       <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <Card className="border border-[var(--line)] bg-[var(--surface)]">
           <CardHeader>
-            <CardTitle className="text-center text-xl text-white md:text-2xl">Cursos / Certificaciones</CardTitle>
+            <CardTitle className="text-center text-xl text-white md:text-2xl">
+              {isEn ? "Courses / Certifications" : "Cursos / Certificaciones"}
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {certifications.map((item) => (
@@ -38,7 +42,7 @@ export function SecurityFocusSection({ focus, certifications }: SecurityFocusSec
                   <p className="text-sm font-semibold text-white">{item.name}</p>
                   <p className="text-sm text-[var(--text-muted)]">{item.issuer}</p>
                   <p className="text-xs text-[var(--text-muted)]">{item.date}</p>
-                  <p className="text-xs text-[var(--text-muted)]">Cert ID: {item.certId}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{isEn ? "Cert ID:" : "ID del certificado:"} {item.certId}</p>
                 </div>
                 <a className="block" href={item.fileUrl} rel="noreferrer" target="_blank">
                   <img
@@ -49,7 +53,7 @@ export function SecurityFocusSection({ focus, certifications }: SecurityFocusSec
                   />
                 </a>
                 <a className="mt-3 inline-flex text-xs text-[var(--accent)]" href={item.fileUrl} rel="noreferrer" target="_blank">
-                  Abrir certificado en tamaño completo
+                  {isEn ? "Open full-size certificate" : "Abrir certificado en tamaño completo"}
                 </a>
               </div>
             ))}

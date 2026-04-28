@@ -9,11 +9,17 @@ import { PapersSection } from "../papers/PapersSection";
 import { SecurityFocusSection } from "../security-focus/SecurityFocusSection";
 import { ContactSection } from "../contact/ContactSection";
 import { profile } from "../../data/profile";
+import { profileEn } from "../../data/profile.en.ts";
 import { featuredSkills } from "../../data/skills";
+import { featuredSkillsEn } from "../../data/skills.en.ts";
 import { projects } from "../../data/projects";
+import { projectsEn } from "../../data/projects.en.ts";
 import { papers } from "../../data/papers";
+import { papersEn } from "../../data/papers.en.ts";
 import { competitiveProgramming } from "../../data/competitive-programming";
+import { competitiveProgrammingEn } from "../../data/competitive-programming.en.ts";
 import { certifications, securityFocus } from "../../data/security";
+import { certificationsEn, securityFocusEn } from "../../data/security.en.ts";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -32,27 +38,40 @@ const MotionWrap = ({ children }: { children: ReactNode }) => (
   </motion.div>
 );
 
-export default function PortfolioApp() {
+type PortfolioAppProps = {
+  locale?: "es" | "en";
+};
+
+export default function PortfolioApp({ locale = "es" }: PortfolioAppProps) {
+  const isEn = locale === "en";
+  const profileData = isEn ? profileEn : profile;
+  const skillsData = isEn ? featuredSkillsEn : featuredSkills;
+  const projectsData = isEn ? projectsEn : projects;
+  const papersData = isEn ? papersEn : papers;
+  const competitiveData = isEn ? competitiveProgrammingEn : competitiveProgramming;
+  const certificationsData = isEn ? certificationsEn : certifications;
+  const securityFocusData = isEn ? securityFocusEn : securityFocus;
+
   return (
     <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <div className="bg-tech-grid min-h-screen">
-        <NavbarSection />
-        <HeroSection profileData={profile} />
-        <AboutSection profileData={profile} competitiveData={competitiveProgramming} />
+        <NavbarSection locale={locale} />
+        <HeroSection locale={locale} profileData={profileData} />
+        <AboutSection locale={locale} profileData={profileData} competitiveData={competitiveData} />
         <MotionWrap>
-          <SkillsSection skills={featuredSkills} />
+          <SkillsSection locale={locale} skills={skillsData} />
         </MotionWrap>
         <MotionWrap>
-          <ProjectsSection projects={projects} />
+          <ProjectsSection locale={locale} projects={projectsData} />
         </MotionWrap>
         <MotionWrap>
-          <PapersSection papers={papers} />
+          <PapersSection locale={locale} papers={papersData} />
         </MotionWrap>
         <MotionWrap>
-          <SecurityFocusSection certifications={certifications} focus={securityFocus} />
+          <SecurityFocusSection locale={locale} certifications={certificationsData} focus={securityFocusData} />
         </MotionWrap>
         <MotionWrap>
-          <ContactSection profileData={profile} />
+          <ContactSection locale={locale} profileData={profileData} />
         </MotionWrap>
       </div>
     </main>
