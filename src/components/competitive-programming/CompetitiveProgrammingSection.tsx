@@ -11,7 +11,7 @@ type CompetitiveProgrammingSectionProps = {
 
 export function CompetitiveProgrammingSection({ data }: CompetitiveProgrammingSectionProps) {
   return (
-    <section id="competitive-programming" className="reveal-section px-4 py-10 md:px-8 md:py-14">
+    <section id="competitive-programming" className="reveal-section px-4 py-1 md:px-8 md:py-8">
       <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <Card className="border border-[var(--line)] bg-[var(--surface)]">
           <CardHeader>

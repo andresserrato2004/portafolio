@@ -16,7 +16,7 @@ type PapersSectionProps = {
 
 export function PapersSection({ papers }: PapersSectionProps) {
   return (
-    <section id="papers" className="reveal-section px-4 py-10 md:px-8 md:py-14">
+    <section id="papers" className="reveal-section px-4 py-1 md:px-8 md:py-8">
       <div className="mx-auto w-full max-w-6xl">
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-white md:text-3xl">Papers publicados</h2>
         <div className="grid gap-5">

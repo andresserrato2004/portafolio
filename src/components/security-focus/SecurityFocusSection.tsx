@@ -25,7 +25,7 @@ export function SecurityFocusSection({ focus, certifications }: SecurityFocusSec
   });
 
   return (
-    <section id="security-focus" className="reveal-section px-4 py-10 md:px-8 md:py-14">
+    <section id="security-focus" className="reveal-section px-4 py-1 md:px-8 md:py-8">
       <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <Card className="border border-[var(--line)] bg-[var(--surface)]">
           <CardHeader>

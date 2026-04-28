@@ -21,9 +21,6 @@ export function NavbarSection() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-8">
         <div className="flex items-center gap-3">
           <span className="text-sm font-semibold tracking-[0.18em] text-white">DEV//SEC</span>
-          <Chip className="border border-[var(--line)] bg-[var(--surface)] text-[10px] uppercase tracking-[0.12em] text-[var(--accent)]">
-            Open to work
-          </Chip>
         </div>
 
         <nav className="hidden items-center gap-2 md:flex">

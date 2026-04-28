@@ -33,7 +33,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   }, [projects, selectedFilter]);
 
   return (
-    <section id="projects" className="reveal-section px-4 py-10 md:px-8 md:py-14">
+    <section id="projects" className="reveal-section px-4 py-1 md:px-8 md:py-8">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <h2 className="flex items-center gap-2 text-2xl font-bold tracking-tight text-white md:text-3xl">

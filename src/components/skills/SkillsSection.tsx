@@ -18,7 +18,7 @@ const iconMap = {
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
-    <section id="skills" className="reveal-section px-4 py-10 md:px-8 md:py-14">
+    <section id="skills" className="reveal-section px-4 py-1 md:px-8 md:py-8">
       <div className="mx-auto w-full max-w-6xl">
         <h2 className="mb-2 text-2xl font-bold tracking-tight text-white md:text-3xl">Skills</h2>
         <p className="mb-6 text-sm text-[var(--text-muted)]">Tecnologías clave de mi stack principal.</p>
