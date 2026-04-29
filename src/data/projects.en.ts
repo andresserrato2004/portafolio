@@ -23,9 +23,9 @@ export const projectsEn: Project[] = [
       "CI/CD flow from repository to ECR and deployment to ECS Fargate.",
     ],
     executionAssets: [
-      { label: "MVP architecture", pathHint: "public/proyects/sophia/SOPHIA - Architecture MVP.png" },
-      { label: "Entity diagram", pathHint: "public/proyects/sophia/SOPHIA - Entities diagram.png" },
-      { label: "Application running", pathHint: "public/proyects/sophia/aplicacion_funcionando.mp4" },
+      { label: "MVP architecture", pathHint: "public/projects/sophia/SOPHIA - Architecture MVP.png" },
+      { label: "Entity diagram", pathHint: "public/projects/sophia/SOPHIA - Entities diagram.png" },
+      { label: "Application running", pathHint: "public/projects/sophia/aplicacion_funcionando.mp4" },
     ],
     extraContext: [
       "The approach prioritizes real learning personalization, data ethics, and analytics-driven decisions.",
@@ -41,18 +41,18 @@ export const projectsEn: Project[] = [
     diagramAssets: [
       {
         label: "SOPHIA - Architecture MVP",
-        imageUrl: "/proyects/sophia/SOPHIA - Architecture MVP.png",
+        imageUrl: "/projects/sophia/SOPHIA - Architecture MVP.png",
         detailsUrl:
           "https://lucid.app/lucidchart/9a086d67-50a6-4542-98e7-92e5fa2267b2/edit?viewport_loc=-6341%2C-4235%2C20444%2C10317%2CnHeUWmh8~BBi&invitationId=inv_d7624dc8-6570-4963-b2e9-0a5f15e9e623",
       },
       {
         label: "SOPHIA - Entities diagram",
-        imageUrl: "/proyects/sophia/SOPHIA - Entities diagram.png",
+        imageUrl: "/projects/sophia/SOPHIA - Entities diagram.png",
         detailsUrl:
           "https://lucid.app/lucidchart/9a086d67-50a6-4542-98e7-92e5fa2267b2/edit?viewport_loc=-6341%2C-4235%2C20444%2C10317%2CnHeUWmh8~BBi&invitationId=inv_d7624dc8-6570-4963-b2e9-0a5f15e9e623",
       },
     ],
-    demoVideoUrl: "/proyects/sophia/aplicacion_funcionando.mp4",
+    demoVideoUrl: "/projects/sophia/aplicacion_funcionando.mp4",
     detailLinks: [
       {
         label: "View full diagrams in Lucidchart",
@@ -121,7 +121,7 @@ export const projectsEn: Project[] = [
       "You can document design decisions (trade-offs and lessons learned).",
     ],
   },
-  {
+    {
     slug: "plataforma-reservas-monitoreo-eci",
     title: "Reservations and monitoring platform (Escuela Colombiana de Ingeniería)",
     description:
@@ -139,9 +139,8 @@ export const projectsEn: Project[] = [
       "Containerized deployment for environment consistency.",
     ],
     executionAssets: [
-      { label: "Reservations dashboard", pathHint: "public/projects/reservas/dashboard-reservas.png" },
-      { label: "Monitoring module", pathHint: "public/projects/reservas/monitoring-panel.png" },
-      { label: "Architecture diagram", pathHint: "public/projects/reservas/architecture.png" },
+      { label: "Day Interface", pathHint: "/projects/reservas/Day.png" },
+      { label: "Schedule Interface", pathHint: "/projects/reservas/schedule.png" },
     ],
     extraContext: [
       "Includes evidence of the complete reservation flow.",

@@ -98,14 +98,16 @@ export function ProjectsSection({ projects, locale = "es" }: ProjectsSectionProp
                     </span>
                   </Button>
                 </a>
-                <a className="inline-flex" href={project.githubUrl} rel="noreferrer" target="_blank">
-                  <Button className="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2 text-xs text-white">
-                    <span className="inline-flex items-center gap-1.5">
-                      <GitBranch size={14} />
-                      GitHub
-                    </span>
-                  </Button>
-                </a>
+                {project.githubUrl? ( 
+                  <a className="inline-flex" href={project.githubUrl} rel="noreferrer" target="_blank">
+                    <Button className="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2 text-xs text-white">
+                      <span className="inline-flex items-center gap-1.5">
+                        <GitBranch size={14} />
+                        GitHub
+                      </span>
+                    </Button>
+                  </a>
+                ): null}
                 {project.demoUrl ? (
                   <a className="inline-flex" href={project.demoUrl} rel="noreferrer" target="_blank">
                     <Button className="rounded-full border border-[var(--primary)] bg-[var(--primary)] px-4 py-2 text-xs text-white">

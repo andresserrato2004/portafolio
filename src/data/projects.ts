@@ -8,7 +8,7 @@ export type Project = {
   stack: string[];
   category: ProjectCategory;
   impact: string;
-  githubUrl: string;
+  githubUrl?: string;
   demoUrl?: string;
   architecture: string[];
   executionAssets: Array<{ label: string; pathHint: string }>;
@@ -44,9 +44,9 @@ export const projects: Project[] = [
       "Flujo CI/CD desde repositorio hacia ECR y despliegue en ECS Fargate.",
     ],
     executionAssets: [
-      { label: "Arquitectura MVP", pathHint: "public/proyects/sophia/SOPHIA - Architecture MVP.png" },
-      { label: "Diagrama de entidades", pathHint: "public/proyects/sophia/SOPHIA - Entities diagram.png" },
-      { label: "Aplicación funcionando", pathHint: "public/proyects/sophia/aplicacion_funcionando.mp4" },
+      { label: "Arquitectura MVP", pathHint: "public/projects/sophia/SOPHIA - Architecture MVP.png" },
+      { label: "Diagrama de entidades", pathHint: "public/projects/sophia/SOPHIA - Entities diagram.png" },
+      { label: "Aplicación funcionando", pathHint: "public/projects/sophia/aplicacion_funcionando.mp4" },
     ],
     extraContext: [
       "El enfoque prioriza personalización real del aprendizaje, ética de datos y decisiones basadas en analítica.",
@@ -62,18 +62,18 @@ export const projects: Project[] = [
     diagramAssets: [
       {
         label: "SOPHIA - Architecture MVP",
-        imageUrl: "/proyects/sophia/SOPHIA - Architecture MVP.png",
+        imageUrl: "/projects/sophia/SOPHIA - Architecture MVP.png",
         detailsUrl:
           "https://lucid.app/lucidchart/9a086d67-50a6-4542-98e7-92e5fa2267b2/edit?viewport_loc=-6341%2C-4235%2C20444%2C10317%2CnHeUWmh8~BBi&invitationId=inv_d7624dc8-6570-4963-b2e9-0a5f15e9e623",
       },
       {
         label: "SOPHIA - Entities diagram",
-        imageUrl: "/proyects/sophia/SOPHIA - Entities diagram.png",
+        imageUrl: "/projects/sophia/SOPHIA - Entities diagram.png",
         detailsUrl:
           "https://lucid.app/lucidchart/9a086d67-50a6-4542-98e7-92e5fa2267b2/edit?viewport_loc=-6341%2C-4235%2C20444%2C10317%2CnHeUWmh8~BBi&invitationId=inv_d7624dc8-6570-4963-b2e9-0a5f15e9e623",
       },
     ],
-    demoVideoUrl: "/proyects/sophia/aplicacion_funcionando.mp4",
+    demoVideoUrl: "/projects/sophia/aplicacion_funcionando.mp4",
     detailLinks: [
       {
         label: "Ver diagramas completos en Lucidchart",
@@ -116,6 +116,32 @@ export const projects: Project[] = [
     ],
   },
   {
+     slug: "plataforma-reservas-monitoreo-eci",
+     title: "Plataforma de reservas y monitoreo (Escuela Colombiana de Ingeniería)",
+     description:
+       "Diseño y despliegue de plataforma contenerizada para reservas de salones y monitoreo académico.",
+     longDescription:
+       "Solución institucional para centralizar reservas de espacios y monitoreo de actividad académica. El objetivo principal fue digitalizar procesos internos y habilitar trazabilidad operacional.",
+     stack: ["Node.js", "Docker", "Monitoring", "Full Stack"],
+     category: "security",
+     impact: "Digitalizó procesos internos y centralizó métricas del uso de los salones de clases.",
+     demoUrl: "http://reservaslab.is.escuelaing.edu.co/schedule",
+     architecture: [
+       "Aplicacion Monolitica.",
+       "Módulo de monitoreo para el monitoreo de salones del area de Ingenieria de Sistemas centralizado.",
+       "Persistencia de eventos para trazabilidad y auditoría.",
+       "Despliegue en servidores locales con docker.",
+     ],
+    executionAssets: [
+      { label: "Interfaz Día", pathHint: "/projects/reservas/Day.png" },
+      { label: "Interfaz Horario", pathHint: "/projects/reservas/schedule.png" },
+    ],
+    extraContext: [
+      "Incluye evidencia del flujo de reserva completo.",
+      "Puedes anexar resultados de adopción y mejora operativa.",
+    ],
+  },
+  {
     slug: "Gobirthday",
     title: "GoBirthDay ",
     description:
@@ -140,33 +166,6 @@ export const projects: Project[] = [
     extraContext: [
       "Incluye evidencias de desempeño concurrente.",
       "Puedes documentar decisiones de diseño (trade-offs y lecciones aprendidas).",
-    ],
-  },
-  {
-    slug: "plataforma-reservas-monitoreo-eci",
-    title: "Plataforma de reservas y monitoreo (Escuela Colombiana de Ingeniería)",
-    description:
-      "Diseño y despliegue de plataforma contenerizada para reservas de salones y monitoreo académico.",
-    longDescription:
-      "Solución institucional para centralizar reservas de espacios y monitoreo de actividad académica. El objetivo principal fue digitalizar procesos internos y habilitar trazabilidad operacional.",
-    stack: ["Node.js", "Docker", "Monitoring", "Full Stack"],
-    category: "security",
-    impact: "Digitalizó procesos internos y centralizó métricas de seguimiento académico.",
-    githubUrl: "https://github.com/andresserrato2004",
-    architecture: [
-      "Frontend y backend desacoplados con API de reservas.",
-      "Módulo de monitoreo para seguimiento académico centralizado.",
-      "Persistencia de eventos para trazabilidad y auditoría.",
-      "Despliegue en contenedores para consistencia de entorno.",
-    ],
-    executionAssets: [
-      { label: "Panel de reservas", pathHint: "public/projects/reservas/dashboard-reservas.png" },
-      { label: "Módulo de monitoreo", pathHint: "public/projects/reservas/monitoring-panel.png" },
-      { label: "Diagrama de arquitectura", pathHint: "public/projects/reservas/architecture.png" },
-    ],
-    extraContext: [
-      "Incluye evidencia del flujo de reserva completo.",
-      "Puedes anexar resultados de adopción y mejora operativa.",
     ],
   },
   {

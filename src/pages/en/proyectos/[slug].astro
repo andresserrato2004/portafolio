@@ -13,7 +13,6 @@ const imageUrl = (src: string) => encodeURI(src);
 const isSophia = project.slug === "sistemas-sophia-microservicios";
 const stack = project.stack ?? [];
 const architecture = project.architecture ?? [];
-const securityNotes = project.securityNotes ?? [];
 const detailLinks = project.detailLinks ?? [];
 const ideaApproach = project.ideaApproach ?? [];
 const teamMembers = project.teamMembers ?? [];
@@ -198,27 +197,12 @@ if (!project) {
             </ul>
           </article>
 
-          <article class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
-            <h2 class="text-xl font-semibold text-white">Impact & security</h2>
-            <p class="mt-3 text-sm text-[var(--text-muted)]">
-              <span class="text-white">Impact:</span> {project.impact}
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              {securityNotes.map((note: string) => (
-                <span class="rounded-full border border-[var(--line)] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[var(--primary)]">
-                  {note}
-                </span>
-              ))}
-            </div>
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              class="mt-5 inline-flex rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2 text-xs text-white"
-            >
-              View repository
-            </a>
-          </article>
+           <article class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+             <h2 class="text-xl font-semibold text-white">Impact & security</h2>
+             <p class="mt-3 text-sm text-[var(--text-muted)]">
+               <span class="text-white">Impact:</span> {project.impact}
+             </p>
+           </article>
         </section>
       )}
 
@@ -242,23 +226,43 @@ if (!project) {
         </section>
       ) : null}
 
-      {repoLinks.length ? (
-        <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
-          <h2 class="text-xl font-semibold text-white">Project repositories</h2>
-          <div class="mt-4 grid gap-2 sm:grid-cols-2">
-            {repoLinks.map((repo: { label: string; url: string }) => (
-              <a
-                href={repo.url}
-                target="_blank"
-                rel="noreferrer"
-                class="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 py-2 text-sm text-[var(--text-muted)] transition-colors hover:border-[var(--primary)] hover:text-white"
-              >
-                {repo.label}
-              </a>
-            ))}
-          </div>
-        </section>
-      ) : null}
+       {repoLinks.length ? (
+         <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+           <h2 class="text-xl font-semibold text-white">Project repositories</h2>
+           <div class="mt-4 grid gap-2 sm:grid-cols-2">
+             {repoLinks.map((repo: { label: string; url: string }) => (
+               <a
+                 href={repo.url}
+                 target="_blank"
+                 rel="noreferrer"
+                 class="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 py-2 text-sm text-[var(--text-muted)] transition-colors hover:border-[var(--primary)] hover:text-white"
+               >
+                 {repo.label}
+               </a>
+             ))}
+           </div>
+         </section>
+       ) : null}
+
+         {/* Additional images for the reservations project */}
+         {project.slug === "plataforma-reservas-monitoreo-eci" && (
+           <section class="mt-8">
+             <h2 class="text-xl font-semibold text-white mb-4">Project Images</h2>
+             <div class="grid gap-4 sm:grid-cols-2">
+               {project.executionAssets.map((asset, index) => (
+                 <article class={`rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4`}>
+                   <p class="mb-2 text-sm font-medium text-white">{asset.label}</p>
+                   <img
+                     src={imageUrl(`${asset.pathHint}`)}
+                     alt={asset.label}
+                     class="w-full h-auto rounded-lg border border-[var(--line)] bg-[var(--surface-2)] object-contain"
+                     loading="lazy"
+                   />
+                 </article>
+               ))}
+             </div>
+           </section>
+         )}
     </div>
   </main>
 </MainLayout>
