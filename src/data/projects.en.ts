@@ -25,7 +25,7 @@ export const projectsEn: Project[] = [
     executionAssets: [
       { label: "MVP architecture", pathHint: "public/projects/sophia/SOPHIA - Architecture MVP.png" },
       { label: "Entity diagram", pathHint: "public/projects/sophia/SOPHIA - Entities diagram.png" },
-      { label: "Application running", pathHint: "public/projects/sophia/aplicacion_funcionando.mp4" },
+      { label: "Application running", pathHint: "public/projects/sophia/video_optimizado.mp4" },
     ],
     extraContext: [
       "The approach prioritizes real learning personalization, data ethics, and analytics-driven decisions.",
@@ -52,7 +52,7 @@ export const projectsEn: Project[] = [
           "https://lucid.app/lucidchart/9a086d67-50a6-4542-98e7-92e5fa2267b2/edit?viewport_loc=-6341%2C-4235%2C20444%2C10317%2CnHeUWmh8~BBi&invitationId=inv_d7624dc8-6570-4963-b2e9-0a5f15e9e623",
       },
     ],
-    demoVideoUrl: "/projects/sophia/aplicacion_funcionando.mp4",
+    demoVideoUrl: "/projects/sophia/video_optimizado.mp4",
     detailLinks: [
       {
         label: "View full diagrams in Lucidchart",
@@ -94,33 +94,6 @@ export const projectsEn: Project[] = [
       },
     ],
   },
-  {
-    slug: "Gobirthday",
-    title: "GoBirthDay",
-    description:
-      "Go backend implementation with feature-oriented architecture and PostgreSQL connectivity for concurrent operations.",
-    longDescription:
-      "Full Stack project focused on high-performance concurrent messaging. The solution was designed with clean architecture principles and layered separation to optimize reliability and maintainability.",
-    stack: ["Astro", "Go", "PostgreSQL", "Docker", "Clean Architecture"],
-    category: "api",
-    impact: "This app can send dozens of messages in under one second with high resilience by leveraging Go routines.",
-    githubUrl: "https://github.com/andresserrato2004/GoBirthDay.git",
-    architecture: [
-      "Go API layer for request intake and validation.",
-      "Service layer with business rules and concurrency control.",
-      "PostgreSQL repository layer for robust and efficient persistence.",
-      "Containerization for stable and reproducible deployments.",
-    ],
-    executionAssets: [
-      { label: "Main flow running", pathHint: "public/projects/gobirthday/flow-main.png" },
-      { label: "Concurrency metrics", pathHint: "public/projects/gobirthday/concurrency-metrics.png" },
-      { label: "Service architecture", pathHint: "public/projects/gobirthday/architecture-diagram.png" },
-    ],
-    extraContext: [
-      "Includes evidence of concurrent performance.",
-      "You can document design decisions (trade-offs and lessons learned).",
-    ],
-  },
     {
     slug: "plataforma-reservas-monitoreo-eci",
     title: "Reservations and monitoring platform (Escuela Colombiana de Ingeniería)",
@@ -129,14 +102,14 @@ export const projectsEn: Project[] = [
     longDescription:
       "Institutional solution to centralize space reservations and academic activity monitoring. The main goal was to digitize internal processes and enable operational traceability.",
     stack: ["Node.js", "Docker", "Monitoring", "Full Stack"],
-    category: "security",
+category: "security",
     impact: "Digitized internal processes and centralized academic monitoring metrics.",
-    githubUrl: "https://github.com/andresserrato2004",
+    demoUrl: "http://reservaslab.is.escuelaing.edu.co/schedule",
     architecture: [
-      "Decoupled frontend and backend with reservation API.",
-      "Monitoring module for centralized academic tracking.",
+      "Monolithic application.",
+      "Monitoring module for centralized systems engineering department room monitoring.",
       "Event persistence for traceability and auditing.",
-      "Containerized deployment for environment consistency.",
+      "Deployment on local servers with docker.",
     ],
     executionAssets: [
       { label: "Day Interface", pathHint: "/projects/reservas/Day.png" },
@@ -147,22 +120,53 @@ export const projectsEn: Project[] = [
       "You can attach adoption results and operational improvements.",
     ],
   },
+{
+    slug: "Gobirthday",
+    title: "GoBirthDay ",
+    description:
+      "Go backend implementation with feature-oriented architecture and PostgreSQL connectivity for concurrent operations. The frontend runs with Astro.",
+    longDescription:
+      "Full Stack project oriented to high-performance concurrent messaging. The solution was designed with clean architecture principles and layered separation to optimize operational reliability and maintainability.",
+    stack: ["Astro", "Go", "PostgreSQL", "Docker", "Clean Architecture"],
+    category: "api",
+    impact: "This application can support sending dozens of messages in under 5 seconds with high resilience using Go routines.",
+    githubUrl: "https://github.com/andresserrato2004/GoBirthDay.git",
+    architecture: [
+      "Go API layer for request intake and validation.",
+      "Services layer with business rules and concurrency control.",
+      "PostgreSQL repository for robust and efficient persistence.",
+      "Containerization for stable and reproducible deployment.",
+    ],
+    diagramAssets: [
+      {
+        label: "Database diagram",
+        imageUrl: "/projects/Gobirthday/diagramadb.png",
+        detailsUrl:
+          "https://lucid.app/lucidchart/e5ab360a-a0c2-4887-b9fe-caa9637d93ca/edit?viewport_loc=365%2C529%2C3140%2C1554%2C0_0&invitationId=inv_78c1836b-ebdf-4008-9820-ccbd73e71785",
+      },
+    ],
+    executionAssets: [
+    ],
+    extraContext: [
+      "Includes evidence of concurrent performance.",
+      "You can document design decisions (trade-offs and lessons learned).",
+    ],
+  },
   {
     slug: "automatizacion-evaluacion-datos",
     title: "Institutional data evaluation automation",
     description:
       "Automated evaluation system from analysis to deployment for the Mathematics Department.",
     longDescription:
-      "Project focused on drastically reducing data analysis and evaluation times. Work covered design, integration, and deployment of an automated processing flow.",
+      "Project focused on drastically reducing data analysis and evaluation times. Work covered design, integration, and deployment of an automated processing flow. This project, though no longer deployed, was delivered to the university's Technology Department and holds special value as the first major project I worked on with approximately 2000 people on the platform. In 2023, two of us developers proposed the idea of automating professor-to-student evaluations instead of doing them manually, and digitizing the process to automatically deliver grades and generate corresponding analyses. It's worth noting that these evaluations were conducted in groups of 3-4 students, so each student ended up with 4-5 grades that the professor had to review and analyze. For each grade delivery (roughly every third of the term), the professor had to review around 100 evaluations for an average calculus class of 25 students to assign a grade worth only 10% of the total grade. When we presented the initiative and implemented it, we managed to reduce evaluation times from approximately 2 hours and 30 minutes to just 10 minutes, considering the entire process from students answering the evaluation to the professor reviewing and assigning the grade.",
     stack: ["Backend", "Automation", "Data Processing", "Deployment"],
     category: "tooling",
     impact: "95% reduction in institutional data evaluation times.",
-    githubUrl: "https://github.com/andresserrato2004",
+    demoUrl: "https://progresoestudio.escuelaing.edu.co/login",
     architecture: [
-      "Automated pipeline from data ingestion to final output.",
-      "Data quality validation at each stage.",
-      "Processing modules decoupled by responsibility.",
-      "Optimized result delivery with faster response times.",
+      "SvelteKit",
+      "SupaBase",
+      "Vercel",
     ],
     executionAssets: [
       { label: "Pipeline running", pathHint: "public/projects/evaluacion/pipeline-running.png" },

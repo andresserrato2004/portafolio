@@ -46,7 +46,7 @@ export const projects: Project[] = [
     executionAssets: [
       { label: "Arquitectura MVP", pathHint: "public/projects/sophia/SOPHIA - Architecture MVP.png" },
       { label: "Diagrama de entidades", pathHint: "public/projects/sophia/SOPHIA - Entities diagram.png" },
-      { label: "Aplicación funcionando", pathHint: "public/projects/sophia/aplicacion_funcionando.mp4" },
+      { label: "Aplicación funcionando", pathHint: "public/projects/sophia/video_optimizado.mp4" },
     ],
     extraContext: [
       "El enfoque prioriza personalización real del aprendizaje, ética de datos y decisiones basadas en analítica.",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
           "https://lucid.app/lucidchart/9a086d67-50a6-4542-98e7-92e5fa2267b2/edit?viewport_loc=-6341%2C-4235%2C20444%2C10317%2CnHeUWmh8~BBi&invitationId=inv_d7624dc8-6570-4963-b2e9-0a5f15e9e623",
       },
     ],
-    demoVideoUrl: "/projects/sophia/aplicacion_funcionando.mp4",
+    demoVideoUrl: "/projects/sophia/video_optimizado.mp4",
     detailLinks: [
       {
         label: "Ver diagramas completos en Lucidchart",
@@ -145,12 +145,12 @@ export const projects: Project[] = [
     slug: "Gobirthday",
     title: "GoBirthDay ",
     description:
-      "Implementación backend en Go con arquitectura orientada a features y conexión a PostgreSQL para operaciones concurrentes.",
+      "Implementación backend en Go con arquitectura orientada a features y conexión a PostgreSQL para operaciones concurrentes el front corre con astro.",
     longDescription:
       "Proyecto Full Stack orientado a alto rendimiento para mensajería concurrente. La solución fue diseñada con principios de clean Architecture y separación por capas, optimizando confiabilidad operativa y mantenibilidad.",
     stack: ["Astro","Go", "PostgreSQL", "Docker", "Clean Architecture"],
     category: "api",
-    impact: "Esta aplicacion puede soportar el envío de decenas de mensajes en menos de 1 segundo con alta resiliencia para esto uso Go routines.",
+    impact: "Esta aplicacion puede soportar el envío de decenas de mensajes en menos de 5 segundo con alta resiliencia para esto hice uso Go routines.",
     githubUrl: "https://github.com/andresserrato2004/GoBirthDay.git",
     architecture: [
       "API layer en Go para recepción y validación de solicitudes.",
@@ -158,10 +158,15 @@ export const projects: Project[] = [
       "Repositorio PostgreSQL para persistencia robusta y eficiente.",
       "Contenerización para despliegue estable y reproducible.",
     ],
+    diagramAssets: [
+      {
+        label: "diagrama de la base de datos",
+        imageUrl: "/projects/Gobirthday/diagramadb.png",
+        detailsUrl:
+          "https://lucid.app/lucidchart/e5ab360a-a0c2-4887-b9fe-caa9637d93ca/edit?viewport_loc=365%2C529%2C3140%2C1554%2C0_0&invitationId=inv_78c1836b-ebdf-4008-9820-ccbd73e71785",
+      },
+    ],
     executionAssets: [
-      { label: "Flujo principal en ejecución", pathHint: "public/projects/gobirthday/flow-main.png" },
-      { label: "Métricas de concurrencia", pathHint: "public/projects/gobirthday/concurrency-metrics.png" },
-      { label: "Arquitectura del servicio", pathHint: "public/projects/gobirthday/architecture-diagram.png" },
     ],
     extraContext: [
       "Incluye evidencias de desempeño concurrente.",
@@ -170,29 +175,23 @@ export const projects: Project[] = [
   },
   {
     slug: "automatizacion-evaluacion-datos",
-    title: "Automatización de evaluación de datos institucionales",
+    title: "Automatización de evaluación del Depto de Matemáticas",
     description:
       "Sistema de evaluación automatizado desde análisis hasta despliegue para el Depto. de Matemáticas.",
     longDescription:
-      "Proyecto orientado a reducir drásticamente tiempos de análisis y evaluación de datos. Se trabajó en diseño, integración y despliegue de un flujo automatizado de procesamiento.",
+      "Proyecto orientado a reducir drásticamente los tiempos de análisis y evaluación de datos. Se trabajó en el diseño, integración y despliegue de un flujo automatizado de procesamiento. Este proyecto, aunque ya no está desplegado, fue entregado a la Dirección de Tecnología de la universidad y tiene un valor especial, ya que fue el primer gran proyecto en el que participé con cerca de 2000 personas en la plataforma. En 2023 fuimos dos desarrolladores quienes planteamos la idea de dejar de realizar autoevaluaciones, coevaluaciones y evaluaciones de profesor a estudiante de forma manual, y digitalizar el proceso para entregar las notas de manera automática y generar los análisis correspondientes. Cabe recalcar que estas evaluaciones se realizaban en grupos de entre 3 y 4 personas, por lo cual cada estudiante terminaba teniendo entre 4 y 5 calificaciones que debían ser revisadas y analizadas por el profesor. En cada entrega de notas (tercio), el profesor debía revisar, en un curso promedio de 25 estudiantes de cálculo, cerca de 100 evaluaciones para asignar una nota que equivalía solo al 10% de la calificación total. Cuando presentamos la iniciativa y logramos implementarla, conseguimos disminuir estos tiempos de evaluación de aproximadamente 2 horas y 30 minutos a solo 10 minutos, considerando todo el proceso desde que los estudiantes respondían la evaluación hasta que el profesor revisaba y asignaba la nota.", 
     stack: ["Backend", "Automation", "Data Processing", "Deployment"],
     category: "tooling",
     impact: "Reducción del 95% en tiempos de evaluación de datos institucionales.",
-    githubUrl: "https://github.com/andresserrato2004",
+    demoUrl: "https://progresoestudio.escuelaing.edu.co/login",
     architecture: [
-      "Pipeline automatizado desde ingesta hasta resultado final.",
-      "Validación de calidad de datos en cada etapa.",
-      "Módulos de procesamiento desacoplados por responsabilidad.",
-      "Entrega de resultados con tiempos de respuesta optimizados.",
+      "svelteKit",
+      "supaBase",
+      "vercel",
     ],
     executionAssets: [
-      { label: "Pipeline ejecutándose", pathHint: "public/projects/evaluacion/pipeline-running.png" },
-      { label: "Resultados comparativos", pathHint: "public/projects/evaluacion/results-comparison.png" },
-      { label: "Arquitectura de procesamiento", pathHint: "public/projects/evaluacion/architecture.png" },
     ],
     extraContext: [
-      "Incluye antes/después del tiempo de evaluación.",
-      "Agrega capturas de dashboards o reportes de salida.",
     ],
   },
 ];
